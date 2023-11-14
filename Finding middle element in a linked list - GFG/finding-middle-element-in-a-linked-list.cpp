@@ -39,28 +39,18 @@ struct Node {
 class Solution{
     public:
     /* Should return data of middle node. If linked list is empty, then  -1*/
-int getMiddle(Node *head) {
-    int len = 0;
-    
-    // Calculate the length of the linked list
-    Node *temp = head;
-    while (temp != NULL) {
-        len++;
-        temp = temp->next;
+    int getMiddle(Node *head)
+    {
+        // Your code here
+        Node* fast = head;
+        Node* slow = head;
+        while(slow && fast && fast->next){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow->data;
+        
     }
-    
-    // Calculate the index of the middle node
-    int middleIndex = len / 2;
-    
-    // Traverse to the middle node
-    temp = head;
-    for (int i = 0; i < middleIndex; i++) {
-        temp = temp->next;
-    }
-    
-    // Return the data of the middle node
-    return temp->data;
-}
 };
 
 
